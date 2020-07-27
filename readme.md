@@ -1,5 +1,6 @@
 The purpose of this script is to install sysmon for monitoring system activities, and using winlogbeat to ship the logs to our SIEM. Various registry will be added to enable more comprehensive logging. Scheduled task will be created to auto update sysmon, winlogbeat, and configs every day. Local configs for sysmon and winlogbeat will be overwritten.
 
+
 **Update local sysmonconfig.xml from sysmon-modular**  
 Start powershell as admin.
 ```sh
