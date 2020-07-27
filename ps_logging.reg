@@ -1,0 +1,29 @@
+Windows Registry Editor Version 5.00
+
+; SET Events to log the Command Line if Patch MS15-015 KB3031432 is installed (Win7 and Win 2008, built-in for Win8 & Win2012)
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Audit]
+"ProcessCreationIncludeCmdLine_Enabled"=dword:00000001
+
+; Force Advance Audit Policy
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa]
+"SCENoApplyLegacyAuditPolicy"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\PowerShell]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PowerShell]
+"ExecutionPolicy"="RemoteSigned"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\PowerShell\ModuleLogging]
+"EnableModuleLogging"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\PowerShell\ModuleLogging\ModuleNames]
+"*"="*"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging]
+"EnableScriptBlockLogging"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\PowerShell\Transcription]
+"EnableTranscripting"=dword:00000001
+; optionally set the output directory, defaults to user's documents directory. It should ideally set in centralized location if it's specified.
+"OutputDirectory"="C:\\Users\\Default\\Documents"
+"EnableInvocationHeader"=dword:00000001

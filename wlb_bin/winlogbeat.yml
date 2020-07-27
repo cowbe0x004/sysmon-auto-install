@@ -1,0 +1,58 @@
+winlogbeat.event_logs:
+  #- name: Application
+  #  ignore_older: 72h
+  #- name: System
+  - name: Security
+    processors:
+      - drop_event.when.or:
+        - equals.winlog.event_id: 4624
+        - equals.winlog.event_id: 4634
+        - equals.winlog.event_id: 4656
+        - equals.winlog.event_id: 4658
+        - equals.winlog.event_id: 4664
+        - equals.winlog.event_id: 4670
+        - equals.winlog.event_id: 4673
+        - equals.winlog.event_id: 4688
+        - equals.winlog.event_id: 4689
+        - equals.winlog.event_id: 4690
+        - equals.winlog.event_id: 4776
+        - equals.winlog.event_id: 5031
+        - equals.winlog.event_id: 5152
+        - equals.winlog.event_id: 5156
+        - equals.winlog.event_id: 5157
+        - equals.winlog.event_id: 5158
+        - equals.winlog.event_id: 5379
+        - equals.winlog.event_id: 5447
+        - equals.winlog.event_id: 8002
+  # for newer version of winlogbeat
+    # processors:
+      # - script:
+          # lang: javascript
+          # id: security
+          # file: ${path.home}/module/security/config/winlogbeat-security.js
+  # - name: Microsoft-Windows-Sysmon/Operational
+    # processors:
+      # - script:
+          # lang: javascript
+          # id: sysmon
+          # file: ${path.home}/module/sysmon/config/winlogbeat-sysmon.js
+  - name: Windows PowerShell
+    ignore_older: 168h
+  - name: Microsoft-Windows-Sysmon/Operational
+    ignore_older: 168h
+  - name: Microsoft-Windows-Powershell/Operational
+    ignore_older: 168h
+  - name: Microsoft-Windows-TaskScheduler/Operational
+    ignore_older: 168h
+    
+setup.template.settings:
+  index.number_of_shards: 3
+
+setup.kibana:
+
+output.logstash:
+  hosts: ["siem.sec.liquidweb.com:5044"]
+
+processors:
+  - add_host_metadata: ~
+  - add_cloud_metadata: ~

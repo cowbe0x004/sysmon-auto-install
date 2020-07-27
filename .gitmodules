@@ -1,0 +1,3 @@
+[submodule "sysmon-modular"]
+	path = sysmon-modular
+	url = https://github.com/olafhartong/sysmon-modular
