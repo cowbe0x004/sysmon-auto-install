@@ -5,25 +5,26 @@ winlogbeat.event_logs:
   - name: Security
     processors:
       - drop_event.when.or:
-        - equals.winlog.event_id: 4624
-        - equals.winlog.event_id: 4634
-        - equals.winlog.event_id: 4656
-        - equals.winlog.event_id: 4658
-        - equals.winlog.event_id: 4664
-        - equals.winlog.event_id: 4670
-        - equals.winlog.event_id: 4673
-        - equals.winlog.event_id: 4688
-        - equals.winlog.event_id: 4689
-        - equals.winlog.event_id: 4690
-        - equals.winlog.event_id: 4776
-        - equals.winlog.event_id: 5031
-        - equals.winlog.event_id: 5152
-        - equals.winlog.event_id: 5156
-        - equals.winlog.event_id: 5157
-        - equals.winlog.event_id: 5158
-        - equals.winlog.event_id: 5379
-        - equals.winlog.event_id: 5447
-        - equals.winlog.event_id: 8002
+        # for winlogbeat > 6.8.4 use equals.winlog.event_id:
+        - equals.event_id: 4624
+        - equals.event_id: 4634
+        - equals.event_id: 4656
+        - equals.event_id: 4658
+        - equals.event_id: 4664
+        - equals.event_id: 4670
+        - equals.event_id: 4673
+        - equals.event_id: 4688
+        - equals.event_id: 4689
+        - equals.event_id: 4690
+        - equals.event_id: 4776
+        - equals.event_id: 5031
+        - equals.event_id: 5152
+        - equals.event_id: 5156
+        - equals.event_id: 5157
+        - equals.event_id: 5158
+        - equals.event_id: 5379
+        - equals.event_id: 5447
+        - equals.event_id: 8002
   # for newer version of winlogbeat
     # processors:
       # - script:
